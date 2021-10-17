@@ -1,0 +1,16 @@
+current directory: /tmp/bundler20211017-6172-oizcrbracc-1.5.2/gems/racc-1.5.2/ext/racc/cparse
+/usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20211017-6172-nsfszs.rb extconf.rb
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /tmp/bundler20211017-6172-oizcrbracc-1.5.2/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR=" clean
+
+current directory: /tmp/bundler20211017-6172-oizcrbracc-1.5.2/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR="
+compiling cparse.c
+linking shared-object racc/cparse.so
+
+current directory: /tmp/bundler20211017-6172-oizcrbracc-1.5.2/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cparse.so ./.gem.20211017-6172-l0sio1/racc
