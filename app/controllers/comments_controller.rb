@@ -14,6 +14,20 @@ class CommentsController < ApplicationController
     redirect_to @post
   end
 
+  def accept
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    
+    @comment.update!(accepted: true)
+
+    redirect_to post_comments_path
+  end
+
+  def show
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+  end
+
   # def accept
   #   @comment = Comment.find(params[:id])
   #   @comment.update!(accept: true)

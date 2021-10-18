@@ -4,7 +4,7 @@
   <% @comments.each do |comment| %>
 
     <li>
-      <%= comment.title%> written by <%= comment.commenter %>
+      <b><%= comment.status %></b> <%= link_to "#{comment.title}", post_comment_path(@post, comment) %> written by <%= comment.commenter %>
 
     </li>
 

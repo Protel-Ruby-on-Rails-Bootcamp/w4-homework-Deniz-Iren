@@ -15,35 +15,37 @@
 <h2>Comments</h2>
 
 <% if @post.comments.any? %>
-
   <% @post.comments.each do |comment| %>
-    <p><%= comment.title %></p>
-    <p><%= comment.content %></p>
-    <hr>
+    <% if comment.accepted %>
+      <p><%= comment.title %></p>
+      <p><%= comment.content %></p>
+      <hr>
+    <% end %>
   <% end %>
 <% else %>
   <p> There is no comment yet.</p>
 <% end %>
 
 
+<% unless @post.user == current_user%>
+  <h2>Add Comments</h2>
 
-<h2>Add Comments</h2>
+  <%= form_with model: [@post, @post.comments.build] do |form| %>
 
-<%= form_with model: [@post, @post.comments.build] do |form| %>
+    <p>
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </p>
 
-  <p>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </p>
+    <p>
+      <%= form.label :content %>
+      <%= form.text_area :content %>
+    </p>
 
-  <p>
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </p>
-
-  <p>
+    <p>
     <%= form.submit %>
-  </p>
+    </p>
+  <% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
