@@ -23,6 +23,15 @@ class CommentsController < ApplicationController
     redirect_to post_comments_path
   end
 
+  def deny
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    
+    @comment.update!(accepted: false)
+
+    redirect_to post_comments_path
+  end
+
   def show
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])

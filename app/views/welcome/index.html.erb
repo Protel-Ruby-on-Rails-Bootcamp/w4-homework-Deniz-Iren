@@ -1,15 +1,8 @@
-<h1>Welcome to Like Medium</h1>
+<h1>Welcome to MediumLike</h1>
 <ul>
 
-<% @posts.each do |post|%>
-  <li>
 
-  <% if user_signed_in? %>
-    <%= link_to "#{post.title}", post_path(post)%> | added by <%= link_to post.user.email, profile_path(post.user)%>
-  <% else %>
-    <%= post.title%>
-  <% end %>
-  
-  </li>
+<% unless current_user.nil? %>
+  <%= link_to 'Feedpage', feed_index_path %>
 <% end %>
 </ul>

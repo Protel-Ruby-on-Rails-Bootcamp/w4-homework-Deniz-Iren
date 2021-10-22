@@ -42,6 +42,18 @@ class PostsController < ApplicationController
     end
   end
 
+  def up_vote
+    @post = Post.find(params[:id])
+    
+    @post.update!(vote_count: @post.vote_count + 1)
+  end
+
+  def down_vote
+    @post = Post.find(params[:id])
+    
+    @post.update!(vote_count: @post.vote_count - 1)
+  end
+
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
     respond_to do |format|

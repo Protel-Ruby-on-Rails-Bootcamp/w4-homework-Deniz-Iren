@@ -1,0 +1,17 @@
+<h1>Followed Posts</h1>
+
+<ul>
+  <% @posts.each do |post| %>
+    <% if user_signed_in? %>
+      <li>
+        Title: <%= link_to post.title, post_path(post) %> 
+        <br>
+        Content: <%= post.content.truncate(100) %>
+        <br> 
+        Added by: <%= link_to post.user.email, profile_path(post.user) %>
+      </li>
+    <% else %>
+      <li><%= post.title %> by <%= post.author %></li>
+    <% end %>
+  <% end %>
+</ul>

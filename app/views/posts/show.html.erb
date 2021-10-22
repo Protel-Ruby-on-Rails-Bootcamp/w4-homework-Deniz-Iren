@@ -12,6 +12,9 @@
 
 <hr />
 
+<h2> Vote </h2>
+<p> <%= link_to 'Upvote', up_vote_post_path(@post), method: :patch %> | <%= link_to 'Downvote', down_vote_post_path(@post), method: :patch %> 
+
 <h2>Comments</h2>
 
 <% if @post.comments.any? %>
