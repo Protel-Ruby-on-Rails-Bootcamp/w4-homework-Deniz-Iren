@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>W4HomeworkDenizIren</title>
+    <title>MediumLike</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <p><%= link_to '🏠', root_path %> | <% if user_signed_in? %> <%= link_to 'Dashboard', dashboard_index_path %> <% end %></p>
+    <p><%= link_to '🏠', root_path %> | <% if user_signed_in? %> <%= link_to 'Dashboard', dashboard_index_path %> <%= link_to 'Profile', profile_path(current_user) %> <% end %></p>
     
     <% if user_signed_in? %>
       Logged in as <strong><%= current_user.email %></strong>

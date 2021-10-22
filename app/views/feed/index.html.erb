@@ -8,10 +8,11 @@
         <br>
         Content: <%= post.content.truncate(100) %>
         <br> 
+        Vote count: <%= post.vote_count %>
+        <br>
         Added by: <%= link_to post.user.email, profile_path(post.user) %>
       </li>
-    <% else %>
-      <li><%= post.title %> by <%= post.author %></li>
+
     <% end %>
   <% end %>
 </ul>

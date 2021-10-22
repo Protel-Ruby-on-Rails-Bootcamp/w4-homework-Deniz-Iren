@@ -1,1 +1,2 @@
-console.log('create');
+$('#follow_form').html("<%= escape_javascript(render('profile/unfollow')) %>");
+$('#followers').html("<b>Following(<%= @user.following.count %>)</b> <b>Follower(<%= @user.followers.count %>)</b>");

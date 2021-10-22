@@ -1,8 +1,11 @@
 <h1><%= @user.email %>'s Profile</h1>
 
 <p>Email: <%= @user.email %></p>
-<b>Following(<%= @user.following.count %>)</b>
-<b>Follower(<%= @user.followers.count %>)</b>
+
+<div id='followers'>
+  <b>Following(<%= @user.following.count %>)</b>
+  <b>Follower(<%= @user.followers.count %>)</b>
+</div>
 
 
 <% if user_signed_in? && @user != current_user %>
