@@ -6,7 +6,7 @@
         <%= link_to post.user.email, profile_path(post.user) %> created a new post at <%= post.created_at%>
       </li>
     <% else %>
-      <li><%= post.title %> by <%= post.author %></li>
+      <li><%= post.title %> by <%= post.user.email %></li>
     <% end %>
   <% end %>
 
