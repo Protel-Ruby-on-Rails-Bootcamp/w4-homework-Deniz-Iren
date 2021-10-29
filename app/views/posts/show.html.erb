@@ -27,22 +27,23 @@
 <h2 style="text-align:center"><strong>Comments</strong></h2>
 
 <div class="container p-3 my-3 rounded", style="border:1px solid #000000; width:500px"> 
-<% if @post.comments.any? %>
-  <% @post.comments.each do |comment| %>
-    <% if comment.accepted %>
-      <h6 style="text-align:center">Comment Title: <%= comment.title %></h6>
-      <h6><%= comment.content %></h6>
-      <h6 style="text-align:center">By <%= comment.commenter %></h6>
+  <% if @post.comments.accepted.any? %>
+    <% @post.comments.each do |comment| %>
+      <% if comment.accepted %>
+        <h6 style="text-align:center"><%= comment.title %></h6>
+        <h6><%= comment.content %></h6>
+        <h6 style="text-align:center">By <%= comment.commenter %></h6>
+      <% end %>
     <% end %>
+  <% else %>
+    <p> There is no comment yet.</p>
   <% end %>
-  </div>
-<% else %>
-  <p> There is no comment yet.</p>
-<% end %>
+</div>
 
+<hr>
 
 <% unless @post.user == current_user%>
-  <div class="container p-3 my-3 rounded", style="border:1px solid #000000;"> 
+  <div class="container p-3 my-3 rounded", style="border:1px solid #000000; width:500px"> 
     <div class="text-center">
       <h2><strong>Add Comments</strong></h2>
 
