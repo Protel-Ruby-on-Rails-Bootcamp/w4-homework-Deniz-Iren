@@ -11,7 +11,7 @@
         <h4> <%= post.content.truncate(300) %></h4>
         <hr>
         <h6 class="text-center">Vote count: <%= post.vote_count %></h6>
-        <h6 class="text-center">Added by: <%= link_to post.user.email, profile_path(post.user) %></h6>
+        <h6 class="text-center">Added by: <%= link_to post.user.username, profile_path(post.user) %></h6>
       </div>
     <% end %>
   <% end %>
