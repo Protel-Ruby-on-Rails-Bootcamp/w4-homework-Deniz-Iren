@@ -1,12 +1,12 @@
-<h1><%= @post.title %> Comments</h1>
+<div class="jumbotron text-center">
+  <h1><%= @post.title %> Comments</h1>
+</div>
 
 <ul>
   <% @comments.each do |comment| %>
-
-    <li>
-      <b><%= comment.status %></b> <%= link_to "#{comment.title}", post_comment_path(@post, comment) %> written by <%= comment.commenter %>
-
-    </li>
-
+    <div class="container p-3 my-3 rounded", style="border:1px solid #000000;"> 
+      <h4><b><%= comment.status %> Comment titled:</b>  <%= link_to comment.title, post_comment_path(@post, comment) %> written by <%= comment.commenter %>.
+      Approve or Deny by clicking the title.</h4>
+    </div>
   <% end %>
 </ul>

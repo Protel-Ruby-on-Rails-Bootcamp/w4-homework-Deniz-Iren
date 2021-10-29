@@ -1,10 +1,19 @@
-<h1>My Posts</h1>
-<table border='1'>
-  <thead>
+<div class="jumbotron text-center">
+  <h1>My Posts</h1>
+</div>
+
+<hr>
+<br><br>
+
+<% unless current_user.posts.empty?%>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
       <th>Title</th>
       <th>Content</th>
       <th>Visible</th>
+      <th>Comment Count</th>
+      <th>Vote Count</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -15,12 +24,17 @@
         <td><%= post.title %></td>
         <td><%= post.content %></td>
         <td><%= post.visible %></td>
+        
+        <td><%= link_to "(#{post.comments.count}) Comments", post_comments_path(post) %></td>
+        <td><%= post.vote_count %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to "(#{post.comments.count}) Comments", post_comments_path(post) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= link_to 'New Post', new_post_path %>
+<% end %>
+<div class="jumbotron text-center">
+  <%= link_to 'Create Post', new_post_path %>
+</div>

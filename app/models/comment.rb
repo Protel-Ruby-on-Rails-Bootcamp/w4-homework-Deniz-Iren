@@ -8,7 +8,7 @@ class Comment < ApplicationRecord
 
   def commenter
     if self.user 
-      user.email
+      user.username
     else
       'Unknown User'
     end

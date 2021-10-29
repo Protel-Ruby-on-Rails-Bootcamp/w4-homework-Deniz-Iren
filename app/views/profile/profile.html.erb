@@ -1,23 +1,52 @@
-<h1><%= @user.email %>'s Profile</h1>
-
-<p>Email: <%= @user.email %></p>
-
-<div id='followers'>
-  <b>Following(<%= @user.following.count %>)</b>
-  <b>Follower(<%= @user.followers.count %>)</b>
+<div class="jumbotron text-center">
+  <h1><%= @user.username %>'s Profile</h1>
+  <hr>
 </div>
 
+<br><br>
 
-<% if user_signed_in? && @user != current_user %>
-  <p><%= render 'follow_form'%></p>
-<% end %>
+<div class="container ", style="border:1px solid #000000;"> 
+  <div class="jumbotron text-center">
+    <h2>User Informations</h2>
+  </div>
+  <h3>Email: <%= @user.email %></h3>
+  <h3>Join Date: <%= @user.created_at.strftime("%m/%d/%Y") %>
 
-<h3><%= @user.email %>'s Posts:</h3>
+  <div id='followers'>
+    <h3>Following: <%= @user.following.count %></h3>
+    <h3>Followers: <%= @user.followers.count %></h3>
+  </div>
 
+
+  <% if user_signed_in? && @user != current_user %>
+    <p><%= render 'follow_form'%></p>
+  <% end %>
+</div>
+
+<br><br>
+
+<div class="jumbotron text-center">
+  <h2><%= @user.username %>'s Posts</h2>
+</div>
 <hr>
 
 <% @posts.each do |post| %>
-  <p><%=link_to post.title, post_path(post)%> by 
-  <%= post.user.email %>
-  <hr>
+  <div class="container p-3 my-4 rounded", style="border:1px solid #000000; width:500px"> 
+    <h2 style="text-align:center"><%= link_to post.title.upcase, post_path(post) %></h2>
+    <h4> <%= post.content.truncate(50) %> </h4>
+  </div>
+<% end %>
+<br><br>
+
+<div class="jumbotron text-center">
+  <h2><%= @user.username %>'s Comments</h2>
+</div>
+<hr>
+
+<% current_user.comments.each do |comment| %>
+  <div class="container p-3 my-4 rounded", style="border:1px solid #000000; width:500px"> 
+    <h2 style="text-align:center"><%= comment.title %></h2>
+    <h4> <%= comment.content.truncate(50) %> </h4> 
+    <h6 style="text-align:center"> Commented at: <%= comment.post.title %></h6>
+  </div>
 <% end %>

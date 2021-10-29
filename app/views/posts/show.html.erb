@@ -1,59 +1,72 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+<div class="jumbotron text-center">
+  <h1><%= @post.title %> </h1>
+</div>
 
 <hr />
 
-<h2> Vote </h2>
+<div class="jumbotron">
+  <p>
+    <h2><strong>Content:</strong></h2>
+    <h4><%= @post.content %></h4>
+  </p>
+</div>
+
+<hr />
+
+<h2><strong>Vote</strong></h2>
 <% unless @post.user == current_user%>
-  <p> <%= link_to 'Upvote', up_vote_post_path(@post), method: :patch %> | <%= link_to 'Downvote', down_vote_post_path(@post), method: :patch %> 
+  <h4> <%= link_to 'Upvote', up_vote_post_path(@post), method: :patch %> | <%= link_to 'Downvote', down_vote_post_path(@post), method: :patch %></h4>
 <% else%>
-  Vote count: <%= @post.vote_count %>
+  <h4>Vote count: <%= @post.vote_count %></h4>
 <% end %>
 
-<h2>Comments</h2>
+<hr />
 
+<h2 style="text-align:center"><strong>Comments</strong></h2>
+
+<div class="container p-3 my-3 rounded", style="border:1px solid #000000; width:500px"> 
 <% if @post.comments.any? %>
   <% @post.comments.each do |comment| %>
     <% if comment.accepted %>
-      <p>Comment Title: <%= comment.title %></p>
-      <p>Content: <%= comment.content %></p>
-      <hr>
+      <h6 style="text-align:center">Comment Title: <%= comment.title %></h6>
+      <h6><%= comment.content %></h6>
+      <h6 style="text-align:center">By <%= comment.commenter %></h6>
     <% end %>
   <% end %>
+  </div>
 <% else %>
   <p> There is no comment yet.</p>
 <% end %>
 
 
 <% unless @post.user == current_user%>
-  <h2>Add Comments</h2>
+  <div class="container p-3 my-3 rounded", style="border:1px solid #000000;"> 
+    <div class="text-center">
+      <h2><strong>Add Comments</strong></h2>
 
-  <%= form_with model: [@post, @post.comments.build] do |form| %>
+      <%= form_with model: [@post, @post.comments.build] do |form| %>
 
-    <p>
-      <%= form.label :title %>
-      <%= form.text_field :title %>
-    </p>
+        <p>
+          <strong><%= form.label :title %></strong>
+          <%= form.text_field :title %>
+        </p>
 
-    <p>
-      <%= form.label :content %>
-      <%= form.text_area :content %>
-    </p>
+        <p>
+          <strong><%= form.label :content %></strong>
+          <%= form.text_area :content %>
+        </p>
 
-    <p>
-    <%= form.submit %>
-    </p>
+        <p>
+        <%= form.submit %>
+        </p>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
+</div>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', dashboard_index_path %>
+<div class="jumbotron text-center">
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Back', dashboard_index_path %>
+</div>

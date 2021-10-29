@@ -1,18 +1,17 @@
-<h1>Followed Posts</h1>
+<div class="jumbotron text-center">
+  <h1>Followed Users and Articles</h1>
+  <hr>
+</div>
 
-<ul>
   <% @posts.each do |post| %>
-    <% if user_signed_in? %>
-      <li>
-        Title: <%= link_to post.title, post_path(post) %> 
+    <div class="container p-3 my-3 rounded", style="border:1px solid #000000;"> 
+      <% if user_signed_in? %>
+        <h2 style="text-align:center"><%= link_to post.title.upcase, post_path(post) %></h2> 
         <br>
-        Content: <%= post.content.truncate(100) %>
-        <br> 
-        Vote count: <%= post.vote_count %>
-        <br>
-        Added by: <%= link_to post.user.email, profile_path(post.user) %>
-      </li>
-
+        <h4> <%= post.content.truncate(300) %></h4>
+        <hr>
+        <h6 class="text-center">Vote count: <%= post.vote_count %></h6>
+        <h6 class="text-center">Added by: <%= link_to post.user.email, profile_path(post.user) %></h6>
+      </div>
     <% end %>
   <% end %>
-</ul>

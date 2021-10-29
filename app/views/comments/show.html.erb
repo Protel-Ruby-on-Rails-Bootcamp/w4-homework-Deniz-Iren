@@ -1,11 +1,18 @@
-<h1><%= @comment.title %></h1>
-<p><%= @comment.content %></p>
-<p><b>Written by <%= @comment.commenter %></b></p>
 
+<div class="container p-3 my-3 rounded", style="border:1px solid #000000;"> 
+	<div class="jumbotron text-center">
+  	<h1><%= @comment.title %></h1>
+		<hr>
+	</div>
+	
+	<h4><%= @comment.content %></h4><hr>
 
-
-<% if @comment.accepted %>
-	<p>Approved | <%= link_to 'Deny', deny_post_comment_path(@comment.post, @comment), method: :patch %></p>
-<% else %>
-	<%= link_to 'Approve', accept_post_comment_path(@comment.post, @comment), method: :patch %>
-<% end %>
+	<h6 style="text-align:center">Written by <%= @comment.commenter %></h6>
+	<div class="jumbotron text-center">
+		<% if @comment.accepted %>
+			<p>Approved | <%= link_to 'Deny', deny_post_comment_path(@comment.post, @comment), method: :patch %></p>
+		<% else %>
+			<%= link_to 'Approve', accept_post_comment_path(@comment.post, @comment), method: :patch %>
+		<% end %>
+	</div>
+</div>

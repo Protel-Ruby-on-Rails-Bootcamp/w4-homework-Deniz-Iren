@@ -1,6 +1,14 @@
-<h1>Editing Post</h1>
+<div class="jumbotron text-center">
+  <h1> Editing <%= @post.title %> </h1>
+</div>
 
-<%= render 'form', post: @post %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', dashboard_index_path %>
+<div class="container p-3 my-3 rounded", style="border:1px solid #000000;"> 
+	<%= render 'form', post: @post %>
+</div>
+
+
+<div class="jumbotron text-center">
+	<%= link_to 'Show', @post %> |
+	<%= link_to 'Back', dashboard_index_path %>
+</div>
