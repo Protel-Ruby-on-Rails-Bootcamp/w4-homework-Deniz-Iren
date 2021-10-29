@@ -11,7 +11,7 @@
   <div class="container p-3 my-3 rounded", style="border:1px solid #000000;"> 
     <% if user_signed_in? %>
       <h2 style="text-align:center"><%= link_to post.title.upcase, post_path(post) %></h2>
-      <h4> <%= post.content.truncate(50) %> </h4>
+      <h4> <%= post.content.truncate(500) %> </h4>
       <br>
       <h6 style="text-align:center"> By: <%= link_to post.user.username, profile_path(post.user) %> </h6> 
     <% else %>

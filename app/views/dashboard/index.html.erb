@@ -22,7 +22,7 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.title %></td>
-        <td><%= post.content %></td>
+        <td><%= post.content.truncate(100) %></td>
         <td><%= post.visible %></td>
         
         <td><%= link_to "(#{post.comments.count}) Comments", post_comments_path(post) %></td>

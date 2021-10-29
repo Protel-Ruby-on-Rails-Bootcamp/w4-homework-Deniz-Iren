@@ -15,30 +15,30 @@
 
 <hr />
 
-<h2><strong>Vote</strong></h2>
+<h2><strong>Vote Count (<%= @post.vote_count%>)</strong></h2>
 <% unless @post.user == current_user%>
   <h4> <%= link_to 'Upvote', up_vote_post_path(@post), method: :patch %> | <%= link_to 'Downvote', down_vote_post_path(@post), method: :patch %></h4>
-<% else%>
-  <h4>Vote count: <%= @post.vote_count %></h4>
 <% end %>
 
 <hr />
 
 <h2 style="text-align:center"><strong>Comments</strong></h2>
 
-<div class="container p-3 my-3 rounded", style="border:1px solid #000000; width:500px"> 
+
   <% if @post.comments.accepted.any? %>
     <% @post.comments.each do |comment| %>
-      <% if comment.accepted %>
-        <h6 style="text-align:center"><%= comment.title %></h6>
-        <h6><%= comment.content %></h6>
-        <h6 style="text-align:center">By <%= comment.commenter %></h6>
-      <% end %>
+      <div class="container p-3 my-3 rounded", style="border:1px solid #000000; width:500px"> 
+        <% if comment.accepted %>
+          <h6 style="text-align:center"><%= comment.title %></h6>
+          <h6><%= comment.content %></h6>
+          <h6 style="text-align:center">By <%= comment.commenter %></h6>
+        <% end %>
+      </div>
     <% end %>
   <% else %>
     <p> There is no comment yet.</p>
   <% end %>
-</div>
+
 
 <hr>
 
